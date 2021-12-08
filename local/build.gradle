@@ -1,0 +1,46 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.0"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 3
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    def dependencies = rootProject.ext.local_dependencies
+    kapt dependencies.room_compiler
+    kapt dependencies.dagger_compiler
+    implementation dependencies.room
+    implementation dependencies.room_coroutines
+
+    def common_dependencies = rootProject.ext.common_dependencies
+
+    testImplementation common_dependencies.junit
+    testImplementation common_dependencies.robolectric
+    // Needed by Room, to build the in-memory data base necessary for tests.
+    testImplementation local_dependencies.livedata
+
+    androidTestImplementation common_dependencies.test_runner
+    androidTestImplementation common_dependencies.espresso_core
+
+    implementation project(':core')
+}

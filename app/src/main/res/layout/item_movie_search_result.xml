@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+	
+	<data>
+		
+		<variable
+			name="movie"
+			type="me.alfredobejarano.movieslist.core.Movie"/>
+	</data>
+	
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/item_movie_search_result_height"
+		android:background="?attr/selectableItemBackground">
+		
+		<com.facebook.drawee.view.SimpleDraweeView
+			android:id="@+id/moviePosterSimpleDraweeView"
+			android:layout_width="@dimen/item_movie_search_result_poster_size"
+			android:layout_height="@dimen/item_movie_search_result_poster_size"
+			android:layout_marginStart="@dimen/item_movie_search_result_margin_start"
+			android:transitionName="moviePosterView"
+			app:actualImageScaleType="center"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:posterURL="@{movie.posterURL}"
+			app:roundAsCircle="true"/>
+		
+		<TextView
+			android:id="@+id/movieTitleTextView"
+			android:layout_width="@dimen/match_constraints"
+			android:layout_height="@dimen/match_constraints"
+			android:layout_marginStart="16dp"
+			android:layout_marginEnd="@dimen/item_movie_search_result_margin_start"
+			android:text="@{movie.title}"
+			android:textColor="?android:textColorPrimary"
+			android:textStyle="bold"
+			app:layout_constraintBottom_toTopOf="@+id/movieDateTextView"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toEndOf="@+id/moviePosterSimpleDraweeView"
+			app:layout_constraintTop_toTopOf="@+id/moviePosterSimpleDraweeView"
+			tools:text="Spider-Man: Into the Spiderverse"/>
+		
+		<TextView
+			android:id="@+id/movieDateTextView"
+			android:layout_width="@dimen/match_constraints"
+			android:layout_height="@dimen/match_constraints"
+			android:layout_marginStart="@dimen/item_movie_search_result_margin_start"
+			android:layout_marginEnd="@dimen/item_movie_search_result_margin_start"
+			android:text="@{movie.releaseDate}"
+			android:textColor="@color/colorTextSecondary"
+			android:textSize="@dimen/item_movie_search_result_date_text_size"
+			android:textStyle="italic"
+			app:layout_constraintBottom_toBottomOf="@+id/moviePosterSimpleDraweeView"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toEndOf="@+id/moviePosterSimpleDraweeView"
+			app:layout_constraintTop_toBottomOf="@+id/movieTitleTextView"
+			tools:text="December 5, 2019"/>
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

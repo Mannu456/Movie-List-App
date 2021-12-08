@@ -1,0 +1,18 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+    def dependencies = rootProject.ext.core_dependencies
+    api dependencies.kotlin
+    api dependencies.dagger
+    api dependencies.coroutines
+    api dependencies.room_annotations
+    kapt dependencies.dagger_compiler
+
+    def common_testing_dependencies = rootProject.ext.common_dependencies
+    testApi common_testing_dependencies.junit
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"

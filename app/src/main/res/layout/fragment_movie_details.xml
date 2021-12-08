@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+	
+	<data>
+		
+		<variable
+			name="movie"
+			type="me.alfredobejarano.movieslist.core.MovieDetails"/>
+	</data>
+	
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		tools:background="@drawable/shape_movie_placeholder">
+		
+		<androidx.constraintlayout.widget.Guideline
+			android:id="@+id/moviePosterGuideline"
+			android:layout_width="@dimen/match_constraints"
+			android:layout_height="@dimen/match_constraints"
+			android:orientation="horizontal"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintGuide_percent="0.92"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"/>
+		
+		<androidx.constraintlayout.widget.Guideline
+			android:id="@+id/movieDetailsGuideline"
+			android:layout_width="@dimen/match_constraints"
+			android:layout_height="@dimen/match_constraints"
+			android:orientation="horizontal"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintGuide_percent="0.4"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"/>
+		
+		<com.facebook.drawee.view.SimpleDraweeView
+			android:id="@+id/moviePosterSimpleDraweeView"
+			posterURL="@{movie.posterURL}"
+			android:layout_width="@dimen/match_constraints"
+			android:layout_height="@dimen/match_constraints"
+			android:scaleType="fitXY"
+			android:transitionName="moviePosterView"
+			app:fadeDuration="500"
+			app:layout_collapseMode="parallax"
+			app:layout_constraintBottom_toBottomOf="@id/moviePosterGuideline"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"/>
+		
+		<androidx.constraintlayout.widget.Group
+			android:id="@+id/movieDetailsGroup"
+			android:layout_width="@dimen/match_constraints"
+			android:layout_height="@dimen/match_constraints"
+			android:background="@drawable/shape_movie_details"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"/>
+		
+		<TextView
+			android:id="@+id/movieTitleTextView"
+			style="@style/AppTheme.MovieListTitle"
+			android:layout_width="@dimen/match_constraints"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="@dimen/movie_details_horizontal_margin"
+			android:layout_marginTop="@dimen/movie_details_horizontal_margin"
+			android:layout_marginEnd="@dimen/movie_details_horizontal_margin"
+			android:maxLines="2"
+			android:text="@{movie.title}"
+			android:textSize="@dimen/movie_details_fragment_movie_title_text_size"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="@+id/movieDetailsGuideline"
+			tools:text="Spider-Man: Far From Home"/>
+		
+		<TextView
+			android:id="@+id/runtimeTextView"
+			android:layout_width="@dimen/match_constraints"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="@dimen/movie_details_horizontal_margin"
+			android:layout_marginTop="@dimen/movie_details_horizontal_margin"
+			android:text="@{String.format(@string/runtime, movie.runtime)}"
+			android:textColor="?android:attr/textColorPrimary"
+			android:textColorHighlight="?android:attr/textColorPrimary"
+			app:layout_constraintEnd_toStartOf="@+id/voteCountTextView"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toEndOf="@+id/moviePosterSimpleDraweeView"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/movieTitleTextView"
+			tools:text="120 min"/>
+		
+		<TextView
+			android:id="@+id/voteCountTextView"
+			android:layout_width="@dimen/match_constraints"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/movie_details_horizontal_margin"
+			android:layout_marginEnd="@dimen/movie_details_horizontal_margin"
+			android:drawableEnd="@drawable/ic_votes_accent_24dp"
+			android:drawablePadding="8dp"
+			android:gravity="end"
+			android:text="@{String.format(@string/votes, movie.votesCount)}"
+			android:textColor="?android:attr/textColorPrimary"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toEndOf="@+id/runtimeTextView"
+			app:layout_constraintTop_toBottomOf="@+id/movieTitleTextView"
+			tools:text="130, 100 votes"/>
+		
+		<TextView
+			android:id="@+id/genresTextView"
+			android:layout_width="@dimen/match_constraints"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="@dimen/movie_details_horizontal_margin"
+			android:layout_marginTop="@dimen/movie_details_fragment_vertical_margin"
+			android:layout_marginEnd="@dimen/movie_details_horizontal_margin"
+			android:text="@{movie.genres.toString()}"
+			android:textColor="@color/colorTextSecondary"
+			android:textStyle="italic"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/runtimeTextView"
+			tools:text="Action, Adventure, Comedy, Fantasy"/>
+		
+		<TextView
+			android:id="@+id/overviewTextView"
+			android:layout_width="@dimen/match_constraints"
+			android:layout_height="@dimen/match_constraints"
+			android:layout_marginStart="@dimen/movie_details_horizontal_margin"
+			android:layout_marginTop="@dimen/movie_details_fragment_vertical_margin"
+			android:layout_marginEnd="@dimen/movie_details_horizontal_margin"
+			android:layout_marginBottom="@dimen/movie_details_horizontal_margin"
+			android:text="@{movie.overview}"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/genresTextView"
+			tools:text="In the latest chapter of MCU's Spider-Man series, our friendly neighborhood superhero"/>
+		
+		<FrameLayout
+			android:id="@+id/movieVideoFrameLayout"
+			android:layout_width="@dimen/match_constraints"
+			android:layout_height="@dimen/match_constraints"
+			app:layout_constraintBottom_toTopOf="@id/movieDetailsGuideline"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:setVisible="@{movie.videoKey.length() > 0}">
+			
+			<ImageView
+				android:layout_width="@dimen/fragment_movie_details_play_button_size"
+				android:layout_height="@dimen/fragment_movie_details_play_button_size"
+				android:layout_gravity="center"
+				android:adjustViewBounds="true"
+				android:background="?android:selectableItemBackground"
+				android:contentDescription="@string/movie_trailer"
+				android:elevation="@dimen/fragment_movie_list_search_bar_elevation"
+				android:src="@drawable/ic_play_arrow_white_24dp"/>
+		</FrameLayout>
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

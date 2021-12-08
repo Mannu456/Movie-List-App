@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/upcoming"
+        android:icon="@drawable/ic_upcoming_text_color_primary_24dp"
+        android:title="@string/menu_upcoming" />
+    <item
+        android:id="@+id/popular"
+        android:icon="@drawable/ic_popular_text_color_primary_24dp"
+        android:title="@string/menu_popular" />
+
+    <item
+        android:id="@+id/top_rated"
+        android:icon="@drawable/ic_top_rated_text_color_primary_24dp"
+        android:title="@string/menu_top_rated" />
+</menu>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+	
+	<data>
+		
+		<variable
+			name="movie"
+			type="me.alfredobejarano.movieslist.core.Movie"/>
+	</data>
+	
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/movieRootLayout"
+		android:layout_width="@dimen/image_list_movie_size"
+		android:layout_height="match_parent"
+		android:layout_marginStart="@dimen/material_design_image_list_padding"
+		android:layout_marginEnd="@dimen/material_design_image_list_padding"
+		android:background="?android:selectableItemBackground">
+		
+		
+		<com.facebook.drawee.view.SimpleDraweeView
+			android:id="@+id/moviePoster"
+			posterURL="@{movie.posterURL}"
+			android:layout_width="@dimen/item_movie_poster_width"
+			android:layout_height="@dimen/match_constraints"
+			android:layout_margin="@dimen/item_movie_poster_corner_radius"
+			android:adjustViewBounds="true"
+			android:elevation="@dimen/item_movie_posteR_elevation"
+			android:focusableInTouchMode="true"
+			android:transitionName="moviePosterView"
+			app:actualImageScaleType="fitXY"
+			app:layout_constraintBottom_toBottomOf="@id/guideline"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:roundedCornerRadius="8dp"
+			app:viewAspectRatio="1"/>
+		
+		<androidx.constraintlayout.widget.Guideline
+			android:id="@+id/guideline"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			app:layout_constraintGuide_percent="0.8"/>
+		
+		<TextView
+			android:id="@+id/movieTitleTextView"
+			android:layout_width="@dimen/match_constraints"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="@dimen/item_movie_text_margin"
+			android:layout_marginEnd="@dimen/item_movie_text_margin"
+			android:singleLine="true"
+			android:text="@{movie.title}"
+			android:textColor="?android:textColorPrimary"
+			android:textStyle="bold"
+			app:layout_constraintBottom_toTopOf="@+id/dateTextView"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="@+id/guideline"
+			tools:text="Spider-Man: Far from home"/>
+		
+		<androidx.constraintlayout.widget.Guideline
+			android:id="@+id/dateGuideline"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			app:layout_constraintGuide_percent="0.4"/>
+		
+		<TextView
+			android:id="@+id/dateTextView"
+			android:layout_width="@dimen/match_constraints"
+			android:layout_height="@dimen/match_constraints"
+			android:layout_marginStart="@dimen/item_movie_text_margin"
+			android:layout_marginEnd="@dimen/item_movie_text_margin"
+			android:gravity="center"
+			android:maxLines="1"
+			android:text="@{movie.releaseDate}"
+			android:textColor="?android:textColorPrimary"
+			android:textSize="12sp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="@+id/dateGuideline"
+			app:layout_constraintTop_toBottomOf="@+id/movieTitleTextView"
+			tools:text="July 19, 2019"/>
+		
+		<TextView
+			android:id="@+id/ratingTextView"
+			android:layout_width="@dimen/match_constraints"
+			android:layout_height="@dimen/match_constraints"
+			android:layout_marginStart="@dimen/item_movie_text_margin"
+			android:layout_marginEnd="@dimen/item_movie_text_margin"
+			android:drawableStart="@drawable/ic_favorite_border_accent_24dp"
+			android:drawablePadding="@dimen/item_movie_text_margin"
+			android:drawableTint="?android:colorAccent"
+			android:gravity="center_vertical"
+			android:text="@{movie.rating}"
+			android:textColor="?android:textColorSecondary"
+			android:textSize="12sp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toStartOf="@+id/dateGuideline"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/movieTitleTextView"
+			tools:targetApi="m"
+			tools:text="100%"/>
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

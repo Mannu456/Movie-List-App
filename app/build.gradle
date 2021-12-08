@@ -1,0 +1,70 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.0"
+    defaultConfig {
+        applicationId "me.alfredobejarano.movieslist"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        buildConfigField "String", "API_KEY", theMovieDBApiKey
+        buildConfigField "String", "BASE_URL", theMovieDBBaseURL
+        buildConfigField "String", "YOUTUBE_API_KEY", youtubeAPIKey
+        buildConfigField "String", "POSTER_BASE_URL", theMovieDBImageBaseURl
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    dataBinding.enabled = true
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    def dependencies = rootProject.ext.app_dependencies
+    kapt dependencies.dagger_compiler
+    implementation dependencies.fresco
+    implementation dependencies.nav_ui
+    implementation dependencies.youtube
+    implementation dependencies.core_ktx
+    implementation dependencies.app_compat
+    implementation dependencies.nav_fragment
+    implementation dependencies.recycler_view
+    implementation dependencies.view_model_ktx
+    kapt dependencies.dagger_android_processor
+    implementation dependencies.dagger_android
+    implementation dependencies.material_version
+    implementation dependencies.constraint_layout
+    implementation dependencies.life_cycle_extensions
+    implementation dependencies.dagger_android_support
+
+
+    def common_dependencies = rootProject.ext.common_dependencies
+    androidTestImplementation dependencies.espresso_rules
+    androidTestImplementation dependencies.espresso_contrib
+    androidTestImplementation common_dependencies.test_runner
+    androidTestImplementation common_dependencies.espresso_core
+
+    implementation project(':core')
+    implementation project(':local')
+    implementation project(':domain')
+    implementation project(':remote')
+    implementation project(':repository')
+}

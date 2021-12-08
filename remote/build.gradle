@@ -1,0 +1,19 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+    def dependencies = rootProject.ext.remote_dependencies
+    implementation dependencies.retrofit_2
+    implementation dependencies.retrofit_gson_converter
+    implementation dependencies.ok_http_logging_interceptor
+    kapt dependencies.dagger_compiler
+    implementation project(':core')
+
+    def common_dependencies = rootProject.ext.common_dependencies
+    testImplementation common_dependencies.junit
+    testImplementation common_dependencies.mockito
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"

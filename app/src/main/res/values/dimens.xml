@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="material_design_image_list_padding">2dp</dimen>
+    <dimen name="image_list_movie_size">185dp</dimen>
+    <dimen name="match_constraints">0dp</dimen>
+    <dimen name="movie_list_title_text_size">12sp</dimen>
+    <dimen name="movie_list_rating_text_size">12sp</dimen>
+    <dimen name="movie_list_rating_progress_bar_size">40dp</dimen>
+    <dimen name="fragment_movie_list_movie_list_margin">8dp</dimen>
+    <dimen name="item_movie_text_margin">4dp</dimen>
+    <dimen name="item_movie_poster_width">92dp</dimen>
+    <dimen name="item_movie_posteR_elevation">2dp</dimen>
+    <dimen name="item_movie_poster_corner_radius">8dp</dimen>
+    <dimen name="fragment_movie_list_search_bar_margin_vertical">8dp</dimen>
+    <dimen name="fragment_movie_list_search_bar_elevation">2dp</dimen>
+    <dimen name="fragment_movie_list_search_bar_padding_horizontal">16dp</dimen>
+    <dimen name="fragment_movie_list_search_bar_drawable_padding">16dp</dimen>
+    <dimen name="item_movie_search_result_height">72dp</dimen>
+    <dimen name="item_movie_search_result_poster_size">40dp</dimen>
+    <dimen name="item_movie_search_result_margin_start">16dp</dimen>
+    <dimen name="item_movie_search_result_date_text_size">12sp</dimen>
+    <dimen name="movie_details_horizontal_margin">8dp</dimen>
+    <dimen name="movie_details_fragment_movie_title_text_size">24sp</dimen>
+	<dimen name="movie_details_fragment_vertical_margin">24dp</dimen>
+	<dimen name="fragment_movie_details_play_button_size">64dp</dimen>
+</resources>

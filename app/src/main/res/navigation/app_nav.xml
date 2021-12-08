@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/app_nav"
+            app:startDestination="@id/movieListFragment">
+	
+	<fragment
+		android:id="@+id/movieListFragment"
+		android:name="me.alfredobejarano.movieslist.movielist.MovieListFragment"
+		android:label="MovieListHubFragment"
+		tools:layout="@layout/fragment_movie_list">
+		<action
+			android:id="@+id/openMovieDetails"
+			app:destination="@id/movieDetailsFragment"
+			app:enterAnim="@anim/nav_default_enter_anim"
+			app:exitAnim="@anim/nav_default_exit_anim"
+			app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+			app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+	</fragment>
+	<fragment
+		android:id="@+id/movieDetailsFragment"
+		android:name="me.alfredobejarano.movieslist.details.MovieDetailsFragment"
+		android:label="MovieDetailsFragment"
+		tools:layout="@layout/fragment_movie_details">
+		<argument
+			android:name="movieId"
+			android:defaultValue="0"
+			app:argType="integer"/>
+	</fragment>
+</navigation>
